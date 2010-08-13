@@ -1,3 +1,6 @@
+IS_GENTOO=1
+COLORFUL_ALIASES=1
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -25,10 +28,22 @@ zstyle ':completion:*' menu select
 
 autoload -U promptinit
 promptinit
-prompt gentoo
+if [[ $IS_GENTOO -eq 1 ]]; then
+  prompt gentoo
+else
+  #prompt elite green yellow
+  prompt clint
+fi
 
-alias ls='ls -p --color'
-alias "ls -s"='ls -sh'
-alias ll='ls -p -lah --color'
-alias la='ls -p -la --color'
-alias grep='grep --colour=auto'
+if [[ $COLORFUL_ALIASES -eq 1 ]]; then
+  alias ls='ls -p --color'
+  alias "ls -s"='ls -sh'
+  alias ll='ls -p -lah --color'
+  alias la='ls -p -la --color'
+  alias grep='grep --colour=auto'
+else
+  alias ls='ls -p'     
+  alias "ls -s"='ls -sh'  
+  alias ll='ls -p -lah'
+  alias la='ls -p -la' 
+fi

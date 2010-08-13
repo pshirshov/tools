@@ -1,0 +1,34 @@
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd extendedglob notify
+setopt hist_ignore_all_dups histfindnodups
+
+unsetopt appendhistory beep
+bindkey -e
+
+zstyle :compinstall filename '~/.zshrc'
+autoload -Uz compinit
+compinit
+
+export ZLS_COLORS=$LS_COLORS
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
+zstyle ':completion:*:processes' command 'ps -xuf'
+zstyle ':completion:*:processes' sort false
+zstyle ':completion:*:processes-names' command 'ps xho command'
+
+zmodload zsh/complist
+#zstyle ':completion:*' menu yes select
+zstyle ':completion:*' menu select
+
+autoload -U promptinit
+promptinit
+prompt gentoo
+
+alias ls='ls -p --color'
+alias "ls -s"='ls -sh'
+alias ll='ls -p -lah --color'
+alias la='ls -p -la --color'
+alias grep='grep --colour=auto'

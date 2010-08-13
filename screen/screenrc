@@ -1,0 +1,32 @@
+startup_message off
+deflogin on
+autodetach on
+
+vbell on
+vbell_msg "   Wuff  ----  Wuff!!  " 
+
+defscrollback 8192
+
+# Remove some stupid / dangerous key bindings
+bind ^k
+#bind L
+bind ^\
+# Make them better
+bind \\ quit
+bind K kill
+bind I login on
+bind O login off
+bind } history
+
+termcapinfo vt100 dl=5\E[M
+termcapinfo xterm*|rxvt*|kterm*|Eterm* hs:ts=\E]0;:fs=\007:ds=\E]0;\007
+termcapinfo xterm*|linux*|rxvt*|Eterm* OP
+termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+# screen buffer == terminal buffer
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+
+hardstatus alwayslastline
+hardstatus string '%{= kg}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %d %M %c ]%{W}'
+
+defnonblock 5
+

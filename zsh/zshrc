@@ -100,7 +100,6 @@ else
   alias la='ls -p -la' 
 fi
 
-
 # Usage: extract <file>
 # Description: extracts archived files (maybe)
 extract () {
@@ -114,7 +113,8 @@ extract () {
             *.tgz)      tar -zxvf $1        ;;
             *.zip)      unzip $1            ;;
             *.Z)        uncompress $1       ;;
-            *.rar)      unrar x $1            ;;
+            *.rar)      unrar x $1          ;;
+            *.7z)       7z x $1             ;;
             *)          echo "'$1' Error. Please go away" ;;
             esac
             else
@@ -133,6 +133,7 @@ show-archive() {
          *.tgz)         tar -ztf $1 ;;
          *.zip)         unzip -l $1 ;;
          *.rar)         rar vb $1   ;;
+         *.7z)          7z l $1     ;;
          *)             echo "'$1' Error. Please go away" ;;
          esac
          else
@@ -140,4 +141,4 @@ show-archive() {
   fi
   }
 
-compctl -g '*.tar.Z *.tar.gz *.tgz *.zip *.ZIP *.tar.bz2 *.rar' + -g '*'  show-archive extract
+compctl -g '*.tar.Z *.tar.gz *.tgz *.zip *.ZIP *.tar.bz2 *.rar *.7z' + -g '*'  show-archive extract

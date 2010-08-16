@@ -1,10 +1,10 @@
 MODE ?= global
 
-CFG_OS=linux
-CFG_ZSH_ROOT=/etc/zsh
+CFG_OS ?= linux
+CFG_ZSH_ROOT ?= /etc/zsh
 
 ifeq ($(MODE), global)
-SUDO=sudo
+SUDO ?= sudo
 endif
 
 screen-vars:

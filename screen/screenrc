@@ -1,10 +1,18 @@
 startup_message off
 deflogin on
+defutf8 on
 autodetach on
 
-vbell on
-vbell_msg "   Wuff  ----  Wuff!!  " 
+# restore window after full-screen app
+altscreen on
 
+vbell on
+vbell_msg "Bell: %n " 
+
+defmonitor on
+activity "Activity on %n"
+
+defnonblock 5
 defscrollback 8192
 
 # Remove some stupid / dangerous key bindings
@@ -27,6 +35,3 @@ termcapinfo xterm|xterms|xs|rxvt ti@:te@
 
 hardstatus alwayslastline
 hardstatus string '%{= kg}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %d %M %c ]%{W}'
-
-defnonblock 5
-

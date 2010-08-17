@@ -4,6 +4,7 @@ ifeq ($(MODE), global)
 	m4 revaliases.m4 > revaliases
 	$(SUDO) mv ssmtp.conf /etc/ssmtp/
 	$(SUDO) mv revaliases /etc/ssmtp/
+	echo "Testing mail on `hostname -a` (`uname -a`)" | mail -s "Test mail from `hostname -a`" root
 else
 	@echo local mode, skipping
 endif

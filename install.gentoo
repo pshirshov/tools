@@ -1,5 +1,5 @@
 #!/bin/sh
 
-sudo emerge -DuvaN screen zsh p7zip
+sudo emerge -DuvaN screen zsh p7zip mailx
 
 make install

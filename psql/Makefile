@@ -6,6 +6,7 @@ override psql_dst = $(CFG_PG_ROOT)/psqlrc
 endif
 
 install:
+	@echo "PG config root: $(CFG_PG_ROOT)"
 	mkdir -p ~/.psql
 	$(SUDO) cp $(psql_src) $(psql_dst)
 

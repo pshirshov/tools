@@ -16,7 +16,7 @@ batch:
 	@for tool in $(TOOLS);\
 	do \
 		echo "==============================================="; \
-		echo "== PROCESSING: $$tool"; \
+		echo "== PROCESSING: '$$tool'"; \
 		echo "==============================================="; \
 		cd $$tool && $(MAKE) $(TASK) && cd .. ; \
 	done

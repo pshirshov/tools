@@ -1,6 +1,6 @@
 #IS_GENTOO=1
 
-if ls --color / > /dev/null ; then
+if ls --color / > /dev/null 2>&1 ; then
   COLORFUL_TERM=1
 else
   COLORFUL_TERM=0

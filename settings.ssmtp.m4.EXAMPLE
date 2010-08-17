@@ -1,0 +1,6 @@
+define(SMTP_LOGIN, gmail_login)dnl
+define(SMTP_DOMAIN, domain.tld)dnl
+define(SMTP_PASSWORD, password)dnl
+define(SMTP_SERVER, smtp.gmail.com)dnl
+define(SMTP_PORT, 587)dnl
+define(ROOT_ADDRESS, box@acme.tld)dnl

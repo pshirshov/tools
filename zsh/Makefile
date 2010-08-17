@@ -6,6 +6,7 @@ override zsh_dst = $(CFG_ZSH_ROOT)/zshrc
 endif
 
 install:
+	@echo "ZSH config root: $(CFG_PG_ROOT)"
 	$(SUDO) cp $(zsh_src) $(zsh_dst)
 
 clean:

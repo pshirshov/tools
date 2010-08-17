@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sudo emerge -DuvaN screen zsh p7zip
+
+make install

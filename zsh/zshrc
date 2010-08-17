@@ -1,5 +1,10 @@
 #IS_GENTOO=1
-COLORFUL_TERM=1
+
+if ls --color / > /dev/null ; then
+  COLORFUL_TERM=1
+else
+  COLORFUL_TERM=0
+fi
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -100,6 +105,7 @@ else
   alias la='ls -p -la' 
 fi
 
+################################################################################
 # Usage: extract <file>
 # Description: extracts archived files (maybe)
 extract () {
@@ -142,3 +148,6 @@ show-archive() {
   }
 
 compctl -g '*.tar.Z *.tar.gz *.tgz *.zip *.ZIP *.tar.bz2 *.rar *.7z' + -g '*'  show-archive extract
+################################################################################
+
+source ~/.zshrc

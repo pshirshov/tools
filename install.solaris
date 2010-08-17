@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pfexec pkg install SUNWzsh SUNWp7zip SUNWscreen
+
+/usr/gnu/bin/make install

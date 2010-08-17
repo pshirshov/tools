@@ -1,41 +1,30 @@
-MODE ?= global
+export MODE ?= global
 
-CFG_OS ?= linux
-CFG_ZSH_ROOT ?= /etc/zsh
+CFG_OS := $(shell uname -s  | tr "[:upper:]" "[:lower:]" )
+include config.$(CFG_OS)
 
 ifeq ($(MODE), global)
 SUDO ?= sudo
-endif
-
-screen-vars:
-override screen_src = screen/screenrc
-ifeq ($(MODE), local)
-override screen_dst = ~/.screenrc
 else
-override screen_dst = /etc/screenrc
+SUDO =
 endif
+export SUDO
 
-screenrc: screen-vars
-	$(SUDO) cp $(screen_src) $(screen_dst)
+TOOLS=screen zsh
 
-screenrc-clean: screen-vars
-	$(SUDO) rm $(screen_dst)
+batch:
+	@for tool in $(TOOLS);\
+	do \
+		cd $$tool && $(MAKE) $(TASK) && cd .. ; \
+	done
 
-zsh-vars:
-override zsh_src = zsh/zshrc
-ifeq ($(MODE), local)
-override zsh_dst = ~/.zshrc
-else
-override zsh_dst = $(CFG_ZSH_ROOT)/zshrc
-endif
+clean-var:
+TASK=clean
 
-zshrc: zsh-vars
-	$(SUDO) cp $(zsh_src) $(zsh_dst)
+clean: clean-var batch
 
-zshrc-clean: zsh-vars
-	$(SUDO) rm $(zsh_dst)
+inst-var:
+TASK=install
 
+install: inst-var batch
 
-clean: screenrc-clean zshrc-clean
-
-all: screenrc zshrc

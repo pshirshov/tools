@@ -6,7 +6,7 @@ override screen_dst = /etc/screenrc
 endif
 
 install:
-	$(SUDO) cp -v $(screen_src) $(screen_dst)
+	$(SUDO) cp $(screen_src) $(screen_dst)
 
 clean:
 	$(SUDO) rm $(screen_dst)

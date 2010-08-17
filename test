@@ -1,3 +1,0 @@
-if ls --color / > /dev/null ; then 
-echo OK
-fi

@@ -18,7 +18,7 @@ batch:
 		echo "==============================================="; \
 		echo "== PROCESSING: '$$tool'"; \
 		echo "==============================================="; \
-		cd $$tool && $(MAKE) $(TASK) && cd .. ; \
+		echo `pwd` && cd $$tool && $(MAKE) $(TASK) && cd .. ; \
 	done
 
 clean-var:

@@ -67,12 +67,20 @@ prompt_gentoo_setup () {
   prompt_gentoo_user=${2:-'green'}
   prompt_gentoo_root=${3:-'red'}
   prompt_gentoo_host=${4:-'cyan'}
+  prompt_at_color=${5:-'yellow'}
 
+  add-zsh-hook precmd prompt_update
+}
+prompt_update() {
+prompt_at_color=yellow
+if [ -n "${SSH_CLIENT+x}" ] ; then
+   prompt_at_color=red
+fi
   if [ "$USER" = 'root' ]
   then
     base_prompt="%B%F{$prompt_gentoo_root}%m%k "
   else
-    base_prompt="%B%F{$prompt_gentoo_user}%n@%F{$prompt_gentoo_host}%m%k "
+    base_prompt="%B%F{$prompt_gentoo_user}%n%F{$prompt_at_color}@%F{$prompt_gentoo_host}%m%k "
   fi
   post_prompt="%b%f%k"
 
@@ -83,6 +91,7 @@ prompt_gentoo_setup () {
   PS2="$base_prompt$path_prompt %_> $post_prompt"
   PS3="$base_prompt$path_prompt ?# $post_prompt"
 }
+
 prompt_gentoo_setup 
 
 #if [[ $IS_GENTOO -eq 1 ]]; then

@@ -10,7 +10,7 @@ SUDO =
 endif
 export SUDO
 
-TOOLS=screen zsh
+TOOLS=screen zsh psql
 
 batch:
 	@for tool in $(TOOLS);\

@@ -159,4 +159,3 @@ show-archive() {
 compctl -g '*.tar.Z *.tar.gz *.tgz *.zip *.ZIP *.tar.bz2 *.rar *.7z' + -g '*'  show-archive extract
 ################################################################################
 
-source ~/.zshrc

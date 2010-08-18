@@ -1,4 +1,4 @@
-include(../settings.ssmtp.m4)dnl
+include(../settings/settings.ssmtp.m4)dnl
 # The person who gets all mail for userids < 1000
 # Make this empty to disable rewriting.
 root=ROOT_ADDRESS
@@ -35,4 +35,4 @@ UseTLS=YES
 # Get enhanced (*really* enhanced) debugging information in the logs
 # If you want to have debugging of the config file parsing, move this option
 # to the top of the config file and uncomment
-Debug=YES
+Debug=SSMTP_DEBUG

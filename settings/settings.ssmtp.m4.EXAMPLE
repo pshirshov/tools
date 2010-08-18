@@ -4,3 +4,4 @@ define(SMTP_PASSWORD, password)dnl
 define(SMTP_SERVER, smtp.gmail.com)dnl
 define(SMTP_PORT, 587)dnl
 define(ROOT_ADDRESS, box@acme.tld)dnl
+define(SMTP_DEBUG, NO)dnl

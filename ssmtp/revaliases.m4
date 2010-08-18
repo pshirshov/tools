@@ -1,4 +1,4 @@
-include(../settings.ssmtp.m4)dnl
+include(../settings/settings.ssmtp.m4)dnl
 # sSMTP aliases
 # 
 # Format:       local_account:outgoing_address:mailhub

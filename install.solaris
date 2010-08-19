@@ -4,6 +4,6 @@ pfexec pkg install \
     SUNWzsh SUNWp7zip SUNWscreen SUNWgnu-coreutils \
     SUNWcs SUNWgm4 SUNWgmake 
 
-export M4BIN=usr/bin/gm4
+export M4BIN=/usr/bin/gm4
 
 /usr/gnu/bin/make install

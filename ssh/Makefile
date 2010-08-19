@@ -7,7 +7,7 @@ ifeq ($(MODE), global)
 	$(M4) \
 		-DSFTP_BINARY=$(SFTP_BINARY) \
 		sshd_config.m4 > sshd_config
-	echo $(SUDO) mv sshd_config /etc/ssh/
+	$(SUDO) mv sshd_config /etc/ssh/
 else
 	@echo local mode, skipping
 endif

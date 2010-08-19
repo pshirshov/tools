@@ -58,7 +58,7 @@ include(`foreach.m4')dnl
 include(`settings.ssh.m4')dnl
 # Listening
 Port SSHD_PORT
-ifelse(SSHD_IPV4_ONLY, `yes', `AddressFamily inet2', `') 
+ifelse(SSHD_IPV4_ONLY, `yes', `AddressFamily inet', `') 
 foreach(SSHD_IFACE, SSHD_LISTEN, `ListenAddress SSHD_IFACE
 ')dnl
 

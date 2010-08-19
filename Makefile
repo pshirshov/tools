@@ -1,7 +1,9 @@
 export MODE ?= global
+export CURRENT_USER = $(shell whoami)
 
 CFG_OS := $(shell uname -s  | tr "[:upper:]" "[:lower:]" )
 include config.$(CFG_OS)
+TOOLS=screen zsh psql ssh $(ADDITIONAL_TOOLS)
 
 ifeq ($(MODE), global)
 SUDO ?= sudo
@@ -10,7 +12,8 @@ SUDO =
 endif
 export SUDO
 
-TOOLS=screen zsh psql $(ADDITIONAL_TOOLS)
+export M4=m4 -I ../m4 -I ../settings \
+-DCFG_OS=$(CFG_OS)
 
 batch:
 	@for tool in $(TOOLS);\

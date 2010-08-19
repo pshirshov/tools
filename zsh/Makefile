@@ -8,6 +8,12 @@ endif
 install:
 	@echo "ZSH config root: $(CFG_PG_ROOT)"
 	$(SUDO) cp $(zsh_src) $(zsh_dst)
+ifeq ($(MODE), global)
+	$(SUDO) usermod -s `which zsh` $(CURRENT_USER)
+	$(SUDO) usermod -s `which zsh` `whoami`
+else
+	@echo local mode, skipping shell updates
+endif
 
 clean:
 	$(SUDO) rm $(zsh_dst)

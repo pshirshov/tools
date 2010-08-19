@@ -1,4 +1,4 @@
-include(../settings/settings.ssmtp.m4)dnl
+include(settings.ssmtp.m4)dnl
 # The person who gets all mail for userids < 1000
 # Make this empty to disable rewriting.
 root=ROOT_ADDRESS

@@ -12,7 +12,8 @@ SUDO =
 endif
 export SUDO
 
-export M4=m4 -I ../m4 -I ../settings \
+M4BIN ?= m4
+export M4=$(M4BIN) -I ../m4 -I ../settings \
 -DCFG_OS=$(CFG_OS)
 
 batch:

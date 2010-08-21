@@ -39,8 +39,7 @@ PasswordAuthentication no
 ChallengeResponseAuthentication no
 ifelse(CFG_OS, `sunos', `', `KerberosAuthentication no')
 GSSAPIAuthentication no
-PAMAuthenticationViaKBDInt no
-ifelse(CFG_OS, `sunos', `', `UsePAM no')
+ifelse(CFG_OS, `sunos', `PAMAuthenticationViaKBDInt no', `UsePAM no')
 
 # Tunnels
 AllowTcpForwarding no

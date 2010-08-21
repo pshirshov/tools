@@ -1,6 +1,6 @@
 Protocol 2
 KeepAlive yes
-TCPKeepAlive yes
+ifelse(CFG_OS, `sunos', `', `TCPKeepAlive yes')
 Compression yes
 
 LoginGraceTime 600
@@ -37,15 +37,15 @@ HostbasedAuthentication no
 IgnoreRhosts yes
 PasswordAuthentication no
 ChallengeResponseAuthentication no
-KerberosAuthentication no
+ifelse(CFG_OS, `sunos', `', `KerberosAuthentication no')
 GSSAPIAuthentication no
 PAMAuthenticationViaKBDInt no
-UsePAM no
+ifelse(CFG_OS, `sunos', `', `UsePAM no')
 
 # Tunnels
 AllowTcpForwarding no
 GatewayPorts no
-PermitTunnel no
+ifelse(CFG_OS, `sunos', `', `PermitTunnel no')
 
 # X11 tunneling options
 X11Forwarding yes
@@ -58,7 +58,7 @@ include(`foreach.m4')dnl
 include(`settings.ssh.m4')dnl
 # Listening
 Port SSHD_PORT
-ifelse(SSHD_IPV4_ONLY, `yes', `AddressFamily inet', `') 
+ifelse(CFG_OS, `sunos', `#', `')ifelse(SSHD_IPV4_ONLY, `yes', `AddressFamily inet', `') 
 foreach(SSHD_IFACE, SSHD_LISTEN, `ListenAddress SSHD_IFACE
 ')dnl
 

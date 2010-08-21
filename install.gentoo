@@ -2,6 +2,7 @@
 
 sudo emerge -DuvaN \
     app-misc/screen app-shells/zsh app-arch/p7zip app-misc/wipe \
-    mail-client/mailx net-dns/bind-tools net-misc/ipcalc 
+    mail-client/mailx net-dns/bind-tools net-misc/ipcalc \
+    net-misc/whois 
 
 make install

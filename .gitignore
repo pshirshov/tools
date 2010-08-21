@@ -1,1 +1,6 @@
 settings/*.m4
+
+ssh/sshd_config
+ssmtp/revaliases
+ssmtp/ssmtp.conf
+

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+pfexec pkg install \
+    SUNWgm4 \
+    SUNWgmake \
+    SUNWgnu-coreutils \
+    SUNWzsh \
+    SUNWp7zip \
+    SUNWscreen \
+    SUNWcs

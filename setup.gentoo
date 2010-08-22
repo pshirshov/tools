@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "Installing common tools..."
+sudo emerge -DuvN --ignore-default-opts \
+    app-portage/eix \
+    app-misc/screen \
+    app-shells/zsh \
+    app-arch/p7zip \
+    app-misc/wipe \
+    mail-client/mailx \
+    net-dns/bind-tools \
+    net-misc/ipcalc \
+    net-misc/whois
+
+echo "Installing portage sync script..."
+sudo cp scripts/gentoo-cron-update /etc/cron.daily

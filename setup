@@ -1,0 +1,8 @@
+#!/bin/sh
+
+source ./configure
+
+./setup.${DISTRO}
+
+#$GNUMAKE configure
+${GNUMAKE} install

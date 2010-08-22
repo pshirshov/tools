@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export EMERGE_DEFAULT_OPTS="-v" 
+eix-sync

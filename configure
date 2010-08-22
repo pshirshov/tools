@@ -1,0 +1,46 @@
+#!/bin/sh
+
+fw_cfg_os=`uname -s  | tr "[:upper:]" "[:lower:]"`
+
+if [ "$fw_cfg_os" = "linux" ]; then
+  [ -f /etc/gentoo-release ] && fw_cfg_distro="gentoo"
+  [ -f /etc/SuSE-release ]   && fw_cfg_distro="suse"
+
+  fw_cfg_sudo=sudo
+
+  fw_cfg_gnumakeBIN=`which make`
+  fw_cfg_gnumake=${fw_cfg_gnumake_bin:-make}
+
+  fw_cfg_gnum4_bin=`which m4`
+  fw_cfg_gnum4=${fw_cfg_gnum4_bin:-m4}
+fi
+
+if [ "$fw_cfg_os" = "sunos" ]; then
+  fw_cfg_distro="solaris"
+
+  fw_cfg_sudo=pfexec
+
+  fw_cfg_gnumake_bin=`which gmake`
+  fw_cfg_gnumake=${fw_cfg_gnumake_bin:-gmake}
+
+  fw_cfg_gnum4_bin=`which gm4`
+  fw_cfg_gnum4=${fw_cfg_gnum4_bin:-gm4}
+fi
+
+echo "OS:           ${fw_cfg_os}"
+echo "Distribution: ${fw_cfg_distro}"
+echo "GNU Make:     ${fw_cfg_gnumake} (${fw_cfg_gnumake_bin:-NOT FOUND})"
+echo "GNU M4:       ${fw_cfg_gnum4} (${fw_cfg_gnum4_bin:-NOT FOUND})"
+
+export fw_cfg_os
+export fw_cfg_distro
+
+export fw_cfg_sudo
+
+export fw_cfg_gnumake
+export fw_cfg_gnum4
+
+export fwr_cfg_gnumake_bin
+export fwr_cfg_gnum4_bin
+
+env | grep fw_cfg > environment

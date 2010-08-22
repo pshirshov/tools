@@ -1,9 +1,11 @@
 export MODE ?= global
 export CURRENT_USER = $(shell whoami)
 
-CFG_OS := $(shell uname -s  | tr "[:upper:]" "[:lower:]" )
+CFG_OS := $(fw_cfg_os)
+
 include config.$(CFG_OS)
-TOOLS=screen zsh psql ssh $(ADDITIONAL_TOOLS)
+
+SUDO=$(fwr_cfg_sudo)
 
 ifeq ($(MODE), global)
 SUDO ?= sudo
@@ -12,7 +14,10 @@ SUDO =
 endif
 export SUDO
 
-M4BIN ?= m4
+TOOLS=screen zsh psql ssh $(ADDITIONAL_TOOLS)
+
+M4BIN ?= $(fwr_cfg_gnum4)
+
 export M4=$(M4BIN) -I ../m4 -I ../settings \
 -DCFG_OS=$(CFG_OS)
 
@@ -22,7 +27,9 @@ batch:
 		echo "==============================================="; \
 		echo "== PROCESSING: '$$tool'"; \
 		echo "==============================================="; \
-		cd $$tool && $(MAKE) $(TASK) && cd .. ; \
+		cd $$tool ; \
+		$(MAKE) $(TASK) || exit 1; \
+		cd .. ; \
 	done
 
 clean-var:

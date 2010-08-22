@@ -1,11 +1,11 @@
 export MODE ?= global
 export CURRENT_USER = $(shell whoami)
 
+include environment
+
 CFG_OS := $(fw_cfg_os)
 
-include config.$(CFG_OS)
-
-SUDO=$(fwr_cfg_sudo)
+SUDO=$(fw_cfg_sudo)
 
 ifeq ($(MODE), global)
 SUDO ?= sudo
@@ -14,16 +14,22 @@ SUDO =
 endif
 export SUDO
 
+ifeq ($(fw_cfg_os), linux)
+ADDITIONAL_TOOLS := ssmtp
+endif
+
 TOOLS=screen zsh psql ssh $(ADDITIONAL_TOOLS)
 
-M4BIN ?= $(fwr_cfg_gnum4)
+M4BIN ?= $(fw_cfg_m4)
 
 export M4=$(M4BIN) -I ../m4 -I ../settings \
 -DCFG_OS=$(CFG_OS)
 
 batch:
+	@export terminal_width=`tput cols`
 	@for tool in $(TOOLS);\
 	do \
+		#for (( i=0 ; i<$terminal_width ; i++ )); do echo -n "-" ; done; \
 		echo "==============================================="; \
 		echo "== PROCESSING: '$$tool'"; \
 		echo "==============================================="; \

@@ -1,4 +1,11 @@
+ifeq ($(fw_cfg_os), linux)
+override CFG_ZSH_ROOT=/etc/zsh
+else
+override CFG_ZSH_ROOT=/etc
+endif
+
 override zsh_src = zshrc
+
 ifeq ($(MODE), local)
 override zsh_dst = ~/.zshrc
 else

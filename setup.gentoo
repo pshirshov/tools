@@ -3,6 +3,8 @@
 echo "Installing common tools..."
 sudo emerge -DuvN --ignore-default-opts \
     app-portage/eix \
+    sys-apps/gawk \
+    sys-devel/m4 \
     app-misc/screen \
     app-shells/zsh \
     app-arch/p7zip \

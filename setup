@@ -1,8 +1,14 @@
 #!/bin/sh
 
-source ./configure
+echo "Initial configuration..."
+./configure
+source ./environment
 
 ./setup.${DISTRO}
+
+echo "Reconfiguring..."
+./configure
+source ./environment
 
 #$GNUMAKE configure
 ${GNUMAKE} install

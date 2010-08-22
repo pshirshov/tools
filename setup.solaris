@@ -3,6 +3,7 @@
 pfexec pkg install \
     SUNWgm4 \
     SUNWgmake \
+    SUNWgawk \
     SUNWgnu-coreutils \
     SUNWzsh \
     SUNWp7zip \

@@ -1,3 +1,0 @@
-export CFG_ZSH_ROOT=/etc
-export CFG_PG_ROOT=$(shell /usr/postgres/8.3/bin/pg_config --sysconfdir)
- 

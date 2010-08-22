@@ -8,11 +8,14 @@ if [ "$fw_cfg_os" = "linux" ]; then
 
   fw_cfg_sudo=sudo
 
-  fw_cfg_gnumakeBIN=`which make`
-  fw_cfg_gnumake=${fw_cfg_gnumake_bin:-make}
+  fw_cfg_awk_bin=`which awk`
+  fw_cfg_awk=${fw_cfg_awk_bin:-awk}
 
-  fw_cfg_gnum4_bin=`which m4`
-  fw_cfg_gnum4=${fw_cfg_gnum4_bin:-m4}
+  fw_cfg_make_bin=`which make`
+  fw_cfg_make=${fw_cfg_make_bin:-make}
+
+  fw_cfg_m4_bin=`which m4`
+  fw_cfg_m4=${fw_cfg_m4_bin:-m4}
 fi
 
 if [ "$fw_cfg_os" = "sunos" ]; then
@@ -20,27 +23,26 @@ if [ "$fw_cfg_os" = "sunos" ]; then
 
   fw_cfg_sudo=pfexec
 
-  fw_cfg_gnumake_bin=`which gmake`
-  fw_cfg_gnumake=${fw_cfg_gnumake_bin:-gmake}
+  fw_cfg_awk_bin=`which nawk`
+  fw_cfg_awk=${fw_cfg_awk_bin:-nawk}
 
-  fw_cfg_gnum4_bin=`which gm4`
-  fw_cfg_gnum4=${fw_cfg_gnum4_bin:-gm4}
+  fw_cfg_make_bin=`which gmake`
+  fw_cfg_make=${fw_cfg_make_bin:-gmake}
+
+  fw_cfg_m4_bin=`which gm4`
+  fw_cfg_m4=${fw_cfg_m4_bin:-gm4}
 fi
 
 echo "OS:           ${fw_cfg_os}"
 echo "Distribution: ${fw_cfg_distro}"
-echo "GNU Make:     ${fw_cfg_gnumake} (${fw_cfg_gnumake_bin:-NOT FOUND})"
-echo "GNU M4:       ${fw_cfg_gnum4} (${fw_cfg_gnum4_bin:-NOT FOUND})"
+echo " Make:     ${fw_cfg_make} (${fw_cfg_make_bin:-NOT FOUND})"
+echo " M4:       ${fw_cfg_m4} (${fw_cfg_m4_bin:-NOT FOUND})"
+echo " AWK:      ${fw_cfg_awk} (${fw_cfg_awk_bin:-NOT FOUND})"
 
-export fw_cfg_os
-export fw_cfg_distro
-
-export fw_cfg_sudo
-
-export fw_cfg_gnumake
-export fw_cfg_gnum4
-
-export fwr_cfg_gnumake_bin
-export fwr_cfg_gnum4_bin
-
-env | grep fw_cfg > environment
+if [ -f `which ${fw_cfg_awk}` ]; then
+echo "Writing make-ready environment, reconfiguring not needed"
+set | grep fw_cfg | ${fw_cfg_awk} '{$0="export "$0}1' > environment
+else
+echo "Writing environment, reconfiguring needed before make"
+set | grep fw_cfg | > environment
+fi

@@ -1,4 +1,0 @@
-ADDITIONAL_TOOLS=ssmtp
-
-export CFG_ZSH_ROOT=/etc/zsh
-export CFG_PG_ROOT=$(shell pg_config --sysconfdir)

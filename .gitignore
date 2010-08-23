@@ -1,4 +1,5 @@
 environment
+environment.make
 
 settings/*.m4
 

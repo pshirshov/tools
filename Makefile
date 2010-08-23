@@ -1,7 +1,7 @@
 export MODE ?= global
 export CURRENT_USER = $(shell whoami)
 
-include environment
+include environment.make
 
 CFG_OS := $(fw_cfg_os)
 
@@ -24,15 +24,16 @@ M4BIN ?= $(fw_cfg_m4)
 
 export M4=$(M4BIN) -I ../m4 -I ../settings \
 -DCFG_OS=$(CFG_OS)
+console_width=$(shell tput cols)
 
 batch:
-	@export terminal_width=`tput cols`
 	@for tool in $(TOOLS);\
 	do \
-		#for (( i=0 ; i<$terminal_width ; i++ )); do echo -n "-" ; done; \
-		echo "==============================================="; \
+		for i in `seq 2 $(console_width)`; do echo -n "=" ; done; \
+		echo "=" ; \
 		echo "== PROCESSING: '$$tool'"; \
-		echo "==============================================="; \
+		for i in `seq 2 $(console_width)`; do echo -n "=" ; done; \
+		echo "=" ; \
 		cd $$tool ; \
 		$(MAKE) $(TASK) || exit 1; \
 		cd .. ; \

@@ -1,0 +1,18 @@
+xterm*font: -Misc-Fixed-Medium-R-Normal--18-120-100-100-C-90-ISO10646-1
+
+XTerm*background: black
+XTerm*foreground: LightYellow
+XTerm*pointerColor: red
+XTerm*pointerColorBackground: black
+XTerm*cursorColor: green
+XTerm*internalBorder: 3
+XTerm*loginShell: true
+XTerm*scrollBar: false
+XTerm*scrollKey: true
+XTerm*saveLines: 1000
+XTerm*multiClickTime: 250 
+XTerm*VT100*colorBDMode: on
+XTerm*VT100*colorBD: purple
+XTerm.VT100*dynamicColors: On
+XTerm*metaSendsEscape: true
+XTerm*rightScrollBar: true

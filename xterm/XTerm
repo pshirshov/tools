@@ -1,7 +1,10 @@
-xterm*font: -Misc-Fixed-Medium-R-Normal--18-120-100-100-C-90-ISO10646-1
+!xterm*font: -Misc-Fixed-Medium-R-Normal--18-120-100-100-C-90-ISO10646-1
+XTerm*font: -*-terminus-medium-r-normal-*-14-*-*-*-*-*-iso10646-1
+XTerm*boldFont: -*-terminus-medium-r-normal-*-14-*-*-*-*-*-iso10646-1
 
 XTerm*background: black
-XTerm*foreground: LightYellow
+XTerm*foreground: lightgray
+
 XTerm*pointerColor: red
 XTerm*pointerColorBackground: black
 XTerm*cursorColor: green

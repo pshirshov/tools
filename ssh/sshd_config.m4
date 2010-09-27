@@ -37,8 +37,8 @@ HostbasedAuthentication no
 IgnoreRhosts yes
 PasswordAuthentication no
 ChallengeResponseAuthentication no
-ifelse(CFG_OS, `sunos', `', `KerberosAuthentication no')
-GSSAPIAuthentication no
+ifelse(SSHD_USE_GSS, `yes' `GSSAPIAuthentication no')
+ifelse(SSHD_USE_KERBEROS, `yes' `KerberosAuthentication no')
 ifelse(CFG_OS, `sunos', `PAMAuthenticationViaKBDInt no', `UsePAM no')
 
 # Tunnels

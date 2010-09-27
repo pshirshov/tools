@@ -1,4 +1,6 @@
 define(SSHD_PORT, 22)dnl
 define(SSHD_IPV4_ONLY, yes)dnl
+define(SSHD_USE_KERBEROS, no)dnl
+define(SSHD_USE_GSS, no)dnl
 define(SSHD_USERS, (user1, user2))dnl
 define(SSHD_LISTEN, (192.168.0.1))dnl

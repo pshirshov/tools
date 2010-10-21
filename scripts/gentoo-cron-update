@@ -1,4 +1,8 @@
 #!/bin/sh
 
-export EMERGE_DEFAULT_OPTS="-v" 
-eix-sync
+layman -S
+EMERGE_DEFAULT_OPTS="" eix-sync > /dev/null
+eix-sync -d
+
+emerge --metadata
+eix-update > /dev/null 2>&1

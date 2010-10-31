@@ -10,6 +10,10 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+#export WORDCHARS=${WORDCHARS:s#/#}
+#WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+WORDCHARS=''
+
 setopt autocd extendedglob notify
 setopt hist_ignore_all_dups
 setopt hist_find_no_dups

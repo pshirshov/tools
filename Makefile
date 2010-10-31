@@ -13,6 +13,8 @@ endif
 
 ifeq ($(fw_cfg_os), linux)
 ADDITIONAL_TOOLS := ssmtp
+else
+export SYSV3=""
 endif
 
 TOOLS=screen zsh psql ssh $(ADDITIONAL_TOOLS) xterm

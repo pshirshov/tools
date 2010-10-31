@@ -13,7 +13,9 @@ endif
 
 ifeq ($(fw_cfg_os), linux)
 ADDITIONAL_TOOLS := ssmtp
+ECHOSYM=echo -n "="
 else
+ECHOSYM=echo "=\c"
 endif
 
 TOOLS=screen zsh psql ssh $(ADDITIONAL_TOOLS) xterm
@@ -24,13 +26,15 @@ export M4=$(M4BIN) -I ../m4 -I ../settings \
 -DCFG_OS=$(CFG_OS)
 #console_width=$(shell tput cols)
 
+
+
 batch:
 	@for tool in $(TOOLS);\
 	do \
-		for i in `seq 2 \`tput cols\``; do echo "=\c" ; done; \
+		for i in `seq 2 \`tput cols\``; do $(ECHOSYM) ; done; \
 		echo "=" ; \
 		echo "== PROCESSING: '$$tool'"; \
-		for i in `seq 2 \`tput cols\``; do echo "=\c" ; done; \
+		for i in `seq 2 \`tput cols\``; do $(ECHOSYM) ; done; \
 		echo "=" ; \
 		cd $$tool ; \
 		$(MAKE) $(TASK) || exit 1; \

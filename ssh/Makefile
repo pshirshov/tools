@@ -1,5 +1,16 @@
-SFTP_BINARY=$(shell find /usr -name sftp-server -print 2>/dev/null|head -n 1)
-SSHD_BINARY=$(shell find /usr -name sshd -print 2>/dev/null|head -n 1)
+SFTP_BINARY=$(shell $(SUDO) which sftp-server)
+SSHD_BINARY=$(shell $(SUDO) which sshd)
+
+ifeq ($(SSHD_BINARY), )
+$(shell echo "searching for sshd" >&2)
+SSHD_BINARY=$(shell find /usr -name sshd -print 2>/dev/null | grep -v logwatch | head -n 1)
+endif
+
+ifeq ($(SFTP_BINARY), )
+$(shell echo "searching for sftp-server" >&2)
+SFTP_BINARY=$(shell find /usr -name sftp-server -print 2>/dev/null| grep -v logwatch | head -n 1)
+endif
+
 
 install:
 ifeq ($(MODE), global)
@@ -10,7 +21,7 @@ ifeq ($(MODE), global)
 		-DSFTP_BINARY=$(SFTP_BINARY) \
 		sshd_config.m4 > sshd_config
 	$(SUDO) $(SSHD_BINARY) -t -f sshd_config
-	$(SUDO) mv sshd_config /etc/ssh/
+	$(SUDO) cp sshd_config /etc/ssh/
 else
 	@echo local mode, skipping
 endif

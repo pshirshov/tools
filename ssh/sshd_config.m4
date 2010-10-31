@@ -1,3 +1,7 @@
+# 
+include(`foreach.m4')dnl
+include(`settings.ssh.m4')dnl
+#
 Protocol 2
 KeepAlive yes
 ifelse(CFG_OS, `sunos', `', `TCPKeepAlive yes')
@@ -37,8 +41,8 @@ HostbasedAuthentication no
 IgnoreRhosts yes
 PasswordAuthentication no
 ChallengeResponseAuthentication no
-ifelse(SSHD_USE_GSS, `yes' `GSSAPIAuthentication no')
-ifelse(SSHD_USE_KERBEROS, `yes' `KerberosAuthentication no')
+ifelse(SSHD_USE_GSS, `yes' `GSSAPIAuthentication no', `')
+ifelse(SSHD_USE_KERBEROS, `yes' `KerberosAuthentication no', `')
 ifelse(CFG_OS, `sunos', `PAMAuthenticationViaKBDInt no', `UsePAM no')
 
 # Tunnels
@@ -52,9 +56,6 @@ X11DisplayOffset 10
 X11UseLocalhost yes
 
 Subsystem       sftp    SFTP_BINARY
-# 
-include(`foreach.m4')dnl
-include(`settings.ssh.m4')dnl
 # Listening
 Port SSHD_PORT
 ifelse(CFG_OS, `sunos', `#', `')ifelse(SSHD_IPV4_ONLY, `yes', `AddressFamily inet', `') 

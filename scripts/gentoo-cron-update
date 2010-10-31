@@ -1,7 +1,8 @@
 #!/bin/sh
 
-layman -S
-EMERGE_DEFAULT_OPTS="" eix-sync > /dev/null
+layman -NS
+export EMERGE_DEFAULT_OPTS="" 
+eix-sync > /dev/null
 eix-sync -d
 
 emerge --metadata

@@ -14,7 +14,6 @@ endif
 ifeq ($(fw_cfg_os), linux)
 ADDITIONAL_TOOLS := ssmtp
 else
-export SYSV3=""
 endif
 
 TOOLS=screen zsh psql ssh $(ADDITIONAL_TOOLS) xterm
@@ -28,10 +27,10 @@ export M4=$(M4BIN) -I ../m4 -I ../settings \
 batch:
 	@for tool in $(TOOLS);\
 	do \
-		for i in `seq 2 \`tput cols\``; do echo -n "=" ; done; \
+		for i in `seq 2 \`tput cols\``; do echo "=\c" ; done; \
 		echo "=" ; \
 		echo "== PROCESSING: '$$tool'"; \
-		for i in `seq 2 \`tput cols\``; do echo -n "=" ; done; \
+		for i in `seq 2 \`tput cols\``; do echo "=\c" ; done; \
 		echo "=" ; \
 		cd $$tool ; \
 		$(MAKE) $(TASK) || exit 1; \

@@ -4,11 +4,11 @@ echo "Initial configuration..."
 ./configure
 source ./environment
 
-./setup.${DISTRO}
+./setup.${fw_cfg_distro}
 
 echo "Reconfiguring..."
 ./configure
 source ./environment
 
 #$GNUMAKE configure
-${GNUMAKE} install
+${fw_cfg_make} install

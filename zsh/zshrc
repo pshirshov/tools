@@ -163,3 +163,7 @@ show-archive() {
 compctl -g '*.tar.Z *.tar.gz *.tgz *.zip *.ZIP *.tar.bz2 *.rar *.7z' + -g '*'  show-archive extract
 ################################################################################
 
+if [ -e /etc/zsh-aliases ] ; then
+        . /etc/zsh-aliases
+fi
+

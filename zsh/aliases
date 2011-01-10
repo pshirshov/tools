@@ -1,0 +1,3 @@
+# zsh aliases for gentoo
+alias kern-update="zcat /proc/config.gz > .config && genkernel --menuconfig --no-clean all && emerge @module-rebuild"
+alias sys-update="emerge -DuvaN world && rkhunter --propupd"

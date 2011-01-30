@@ -7,7 +7,7 @@ sudo emerge -DuvN --ignore-default-opts \
     sys-devel/m4 \
     sys-process/atop \
     sys-process/htop \
-    app-misc/screen \
+    app-misc/tmux \
     app-shells/zsh \
     app-arch/p7zip \
     app-misc/wipe \
@@ -15,7 +15,10 @@ sudo emerge -DuvN --ignore-default-opts \
     net-dns/bind-tools \
     net-misc/ipcalc \
     net-misc/whois \
-    app-forensics/rkhunter 
+    app-forensics/rkhunter \
+    app-editors/joe
+
+sudo emerge -C --ignore-default-opts screen
 
 echo "Installing portage sync script..."
 sudo cp scripts/gentoo-cron-update /etc/cron.daily

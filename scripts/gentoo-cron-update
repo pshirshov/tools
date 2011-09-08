@@ -10,3 +10,5 @@ rm -rf /var/cache/edb/dep
 
 emerge --metadata
 eix-update > /dev/null 2>&1
+eclean distfiles
+

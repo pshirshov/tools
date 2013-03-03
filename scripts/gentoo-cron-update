@@ -3,10 +3,12 @@
 layman -NS
 export EMERGE_DEFAULT_OPTS="" 
 eix-sync > /dev/null
-eix-sync -d
+#eix-sync -d
 
-rm /var/cache/eix
+rm -rf /var/cache/eix
 rm -rf /var/cache/edb/dep 
+mkdir /var/cache/eix
+chown portage:portage /var/cache/eix
 
 emerge --metadata
 eix-update > /dev/null 2>&1
